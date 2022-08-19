@@ -54,7 +54,7 @@ class PrivateTagsAPITests(TestCase):
 
         res = self.client.get(TAGS_URL)
 
-        tags = Tag.objects.all().order_by('-id')
+        tags = Tag.objects.all().order_by('-name')
         serializer = TagSerializer(tags, many=True)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
