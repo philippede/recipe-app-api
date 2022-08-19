@@ -51,7 +51,3 @@ class TagViewSet(mixins.DestroyModelMixin,
     def get_queryset(self):
         """Retrieve tags for authenticated user."""
         return self.queryset.filter(user=self.request.user).order_by('-id')
-
-    def perform_create(self, serializer):
-        """Create a new tags"""
-        serializer.save(user=self.request.user)
